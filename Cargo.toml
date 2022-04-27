@@ -1,0 +1,32 @@
+[package]
+name = "slack-rtm-async"
+version = "0.1.0"
+authors = ["Benjamin Elder <bentheelder@gmail.com>", "Matt Jones <mthjones@gmail.com>", "David Hewson <dev@daveid.co.uk>", "C J Silverio <ceejceej@gmail.com>"]
+repository = "https://github.com/ceejbot/slack-rtm-async.git"
+documentation = "https://docs.rs/lack-rtm-async"
+description = "async slack realtime messaging client: https://api.slack.com/bot-users"
+license = "Apache-2.0"
+edition = "2021"
+readme = "README.md"
+
+[dependencies.slack_api]
+git = "https://github.com/ceejbot/slack-rs-api"
+# version = "0.23.1"
+default-features = false
+features = ["async", "reqwest"]
+
+[dependencies]
+serde = "1.0.136"
+serde_json = "1.0.79"
+serde_derive = "1.0.0"
+tungstenite = "0.17.2"
+log = "0.4.16"
+url = "2.1.0"
+tokio = { version = "1.17.0", features = ["full"] }
+async-trait = "0.1.53"
+tokio-tungstenite = "0.17.1"
+
+[features]
+default = ["with_rustls"]
+with_rustls = ["slack_api/with_rustls"]
+with_native_tls = ["slack_api/with_native_tls"]
